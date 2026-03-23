@@ -1,11 +1,9 @@
-Enterprise-Grade Vue 3 Starter 🚀
+🏗️ Vue 3 + TypeScript Enterprise Boilerplate
+A professional-grade starter kit engineered for scalability and type safety. This boilerplate implements industry-standard patterns to leverage the full power of Vue 3 Composition API and Strict TypeScript.
 
-Comprehensive boilerplate featuring:
+🌟 Key Technical Features
+🛡️ Strict Type-Safety: Full TS integration for components, Pinia stores, and API layers.
 
-Composition API with Strict TS
+🏗️ Clean Architecture: Modular folder structure designed for large-scale applications.
 
-Modular Folder Structure
-
-Unit & E2E Testing Environment
-
-Optimized for developer experience and code maintainability.
+🧪 Quality Control: Integrated Vitest, ESLint, and Prettier for consistent code standards.
