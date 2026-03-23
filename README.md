@@ -1,4 +1,4 @@
-🏗️ Vue 3 + TypeScript Enterprise Boilerplate
+# 🏗️ Vue 3 + TypeScript Enterprise Boilerplate
 A professional-grade starter kit engineered for scalability and type safety. This boilerplate implements industry-standard patterns to leverage the full power of Vue 3 Composition API and Strict TypeScript.
 
 🌟 Key Technical Features
