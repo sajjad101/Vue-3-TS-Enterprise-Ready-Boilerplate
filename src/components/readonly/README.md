@@ -1,40 +1,24 @@
-# Vue 3 + TypeScript: Secure State Pattern
+<script setup lang="ts">
+import { inject } from 'vue';
+import { StateKey } from './types';
 
-This repository demonstrates a professional pattern for managing shared state between components using **Vue 3 Composition API** and **TypeScript**. It focuses on **Immutability**, **Type Safety**, and **Performance**.
+const state = inject(StateKey);
 
----
+const handleIllegalChange = () => {
+  if (state) {
+    /**
+     * ❌ TypeScript Error: 
+     * Cannot assign to 'theme' because it is a read-only property.
+     */
+    // state.user.preferences.theme = 'light'; 
+  }
+};
+</script>
 
-## 🚀 The Problem: Prop Drilling & State Mutation
-In large Vue applications, passing data down multiple levels (Prop Drilling) is tedious. Using a simple global object often leads to "Hidden Mutations," where a child component accidentally changes data, causing bugs that are hard to trace and heavy re-renders.
-
-## 💡 The Solution: Provider Pattern with `readonly`
-We use Vue's `provide` and `inject` combined with TypeScript's `DeepReadonly` to ensure:
-1. **One-Way Data Flow:** Only the parent (Source of Truth) can modify the state.
-2. **Type Safety:** Full Autocomplete and compile-time errors for protected properties.
-3. **Efficiency:** Reduces reactive overhead by preventing unauthorized deep-tracking updates.
-
----
-
-## 🛠 Implementation Guide
-
-### 1. Define the Schema (`types.ts`)
-We use an `InjectionKey` to ensure the data injected in the child exactly matches the type provided by the parent.
-
-```typescript
-import { InjectionKey, DeepReadonly } from 'vue';
-
-export interface AppState {
-  user: {
-    id: number;
-    preferences: {
-      theme: 'dark' | 'light';
-      notifications: boolean;
-    };
-  };
-}
-
-/**
- * The key acts as a unique identifier and a type-carrier.
- * Using Symbol ensures no naming collisions.
- */
-export const StateKey: InjectionKey<DeepReadonly<AppState>> = Symbol('AppState');
+<template>
+  <div class="child-container">
+    <h3>Child (Consumer)</h3>
+    <p>Current Theme: **{{ state?.user.preferences.theme }}**</p>
+    <button @click="handleIllegalChange">Try Illegal Change</button>
+  </div>
+</template>
