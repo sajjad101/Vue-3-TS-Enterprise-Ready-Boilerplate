@@ -12,6 +12,11 @@ const router = createRouter({
       path: '/as-const',
       name: 'as-const',
       component: () => import('@/pages/as-const/index.vue'),
+    },
+    {
+      path: '/mark-raw',
+      name: 'markRaw',
+      component: () => import('@/pages/markRaw/index.vue'),
     }
   ],
 })
